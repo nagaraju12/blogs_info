@@ -1,0 +1,16 @@
+<div class="row profile">
+    <div class="col-sm-9 col-md-4">
+    <h5><%= @user.name %></h5>
+       <%= image_tag(@user.avatar.url, :height => 250, :width =>300) %><br>
+Name:<%= @user.name %><br>
+Email:<%= @user.email %><br>
+Gender:<%= @user.gender_type_list %><br>
+Phone:<%= @user.phone%><br>
+Birthday:<%= @user.date_of_birth %><br>
+   <%= link_to 'back', users_path %><br>
+<h2>Photos</h2>
+<%= render @user.albums %>
+<h2>Addpicture:</h2>
+<%= render 'albums/form' %>
+</div>
+

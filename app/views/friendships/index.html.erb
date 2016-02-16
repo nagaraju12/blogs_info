@@ -1,0 +1,43 @@
+<% @users.each do |user| %>
+  <%= user.id %>
+  <%= user.name %>
+  <% unless user == current_user %>
+    <table>
+      <tr>
+        <th><%= user.name %></th>
+        <td> 
+          <p><% friendship = Friendship.check_friendship(user.id, current_user.id) %></p>
+          <% if friendship.present?%>
+            <% if friendship.friend_id == current_user.id && friendship.status == "pending" %>
+     <%= link_to "Accept", accepted_friends_friendship_path(friendship), :method => :put %>
+              <%= link_to "reject", rejected_friends_friendship_path(friendship), :method => :put %>
+            <% elsif friendship.status == "accepted" %>
+              Friends
+            <% elsif friendship.status == "rejected" %>
+              Rejected Friend 
+            <% end %>
+          <% else %>
+            <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+
+          <% end %></br>
+          
+         <%= link_to "Send Message" , masseges_path(:friend_id => user),:method => :get %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+<% end %>
+<h2>Friends</h2>
+<ul>
+   <% for friendship in @user.friendships %>
+    <li>
+     <%= image_tag( User.find(friendship.friend_id).avatar.url, :height => 70, :width =>70) %>
+    <%= User.find(friendship.friend_id).first_name %>
+
+      <%#if friendship.present? %>
+      (<%= link_to "remove", friendship, :method => :delete %>)
+      <% end %>
+     <%#end %></li>
+  
+</ul>  </br>
+<li><%= link_to "back",users_path %></li>

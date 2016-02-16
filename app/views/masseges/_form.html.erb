@@ -1,0 +1,20 @@
+<%= form_for @massege do |f| %>
+  <div>
+    <%= f.label :Title %>
+  </div>
+ <div class="form-group">
+        <%= f.text_field :name, placeholder: "Title", class: "form-control input-lg", label: false, :required =>true %>
+    </div>
+ 
+  <div>
+    <%= f.label :Message %>
+  </div>
+  <div>
+   <%= f.cktext_area :message, :class => 'ckeditor', rows: 10%>
+   
+  </div>
+  
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,41 @@
+  <div class="large-7 row">
+  <div class=" large-8 columns"></div>
+ 
+    <span style="text-align: right">
+     <%= form_tag :friendships,url: friendships_path,:method=>'get' do %>
+       <%= text_field_tag :find_friend_string %>
+       <%= submit_tag  "Find Friend" %>
+     <% end %>
+    </span>
+    </div>
+          </ul>
+<div class="container">
+<div class="users row">
+<p><% @users.each do |user| %>
+        <div class="panel panel-default">
+            <%= link_to user_path(user) do %>
+            <div class="panel-body">
+                <%=image_tag(user.avatar.url, :height => 70, :width =>70) %>
+  <%= link_to "Delete ", user, method: :delete, data: {confirm: "You sure?"} %>
+                <p>NAME:<%= user.name %>
+                 <p>Firstname:<%= user.first_name %></p>
+                <td><% user.images.each do |image| %>
+<%= link_to  image_tag(image.image.url, :height => 50, :width =>80 ), user_path(user.id) %></p>
+<% end %>
+                <p><%= user.email %></p>
+                   <p>GENDER:<%= user.gender_type_list %></p>
+                      
+                         <p>PHONE:<%= user.phone%></p>
+                         <p>BIRTHDAY:<%= user.date_of_birth %></p>
+               
+  <p><%= link_to "Add-friend",friendships_path(@friendship) %></p>
+            </div>
+            <% end %>
+        </div>
+        <% end %>
+    </div>
+</div></p></div></div>
+
+
+  
+

@@ -1,0 +1,17 @@
+<%= nested_form_for([@user, @user.albums.build]) do |f| %>
+  <p>
+    <%= f.label :Name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <div class='field'>
+<%= f.fields_for :images do |image| %>
+  <td><%= image.file_field :image %></td>
+  <p><%= image.link_to_remove "Remove image" %></p>
+<% end %>
+<p><%= f.link_to_add "Add a image", :images %></p>
+</div>
+  <p>
+    <%= f.submit %>
+    
+  </p>
+<% end %>

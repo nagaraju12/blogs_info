@@ -15,4 +15,5 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require ckeditor/init
+//= require jquery_nested_form
 //= require_tree .

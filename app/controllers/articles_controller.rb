@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
-
+#before_filter :is_login?
 	def index
 		@articles= Article.all
+		
 	end
 
 	def new
@@ -10,6 +11,7 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article= Article.new(article_params)
+		UserMailer.welcome_email(@article).deliver
 		if @article.save
 			redirect_to @article
 		else

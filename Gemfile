@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 gem 'ckeditor'
 gem 'paperclip'
 gem 'twitter-bootstrap-rails'
+gem 'devise'
+gem "nested_form"
+gem 'kaminari'
+gem 'kaminari-bootstrap'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record

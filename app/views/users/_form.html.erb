@@ -1,0 +1,41 @@
+<%= nested_form_for @user, html: { multipart: true } do |f| %>
+<%= f.hidden_field :status ,:value => params[:status] %>
+
+  <% if @user.errors.any? %>
+
+    <div id="error_explanation">
+
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+
+      </ul>
+    </div>
+  <% end %>
+
+    <%#= f.label :category_id %>
+    <%#= f.collection_select :category_id, Category.all, :id, :address %>
+
+<% if !@user.new_record? %>
+<br><% @user.images.each do |i| %>
+<%= image_tag(i.image.url, :height => 50, :width =>80 ) %>
+<% end %>
+<% end %>
+
+   <%= f.label :Username %><br/>
+    <div class="form-group">
+        <%=  f.text_field :username, placeholder: "name", class: "form-control input-lg", label: false %>
+    </div>
+ <%= f.label :address %><br/>
+    <div class="form-group">
+        <%= f.text_area :address, placeholder: "Address", class: "form-control input-lg", label: false, :uniqueness_of => true, :required =>true %>
+    </div>
+ 
+
+
+
+  <%= f.submit "Create ",class: "btn btn-success"%>
+    <% end %>

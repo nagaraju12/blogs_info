@@ -1,0 +1,12 @@
+<p>
+  <strong>Name:</strong>
+  <%= album.name %>
+</p>
+<p><% album.images.each do |image| %>
+
+<%= image_tag(image.image.url, :height => 140, :width =>140 ) %>
+
+<% end %></p>
+
+  <li><%= link_to 'Delete', [album.user, album],method: :delete,data: { confirm: 'Are you sure?' } %></li>
+
